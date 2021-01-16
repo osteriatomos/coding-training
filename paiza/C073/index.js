@@ -14,10 +14,9 @@ let usagiRestKm = 0;
 let usagiRestMin = 0;
 
 while (true) {
-  console.log(usagiPosition, kamePosition, usagiRestKm, usagiRestMin);
   if (usagiRestMin < 1) {
-    usagiPosition = usagiPosition + usagiSpeed + 0.0000000001;
-    usagiRestKm = usagiRestKm + usagiSpeed + 0.0000000001;
+    usagiPosition = 1 / 10e9 + usagiPosition + usagiSpeed;
+    usagiRestKm = 1 / 10e9 + usagiRestKm + usagiSpeed;
     if (usagiRestKm >= a) {
       usagiRestKm = 0;
       usagiRestMin = b;
@@ -26,7 +25,7 @@ while (true) {
     usagiRestMin--;
   }
 
-  kamePosition = kamePosition + kameSpeed + 0.0000000001;
+  kamePosition = 1 / 10e9 + kamePosition + kameSpeed;
 
   if (usagiPosition > L && kamePosition > L) {
     console.log("DRAW");
