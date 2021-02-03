@@ -1,23 +1,18 @@
 const getPrime = (num) => {
-  let primes = [];
+  let primes = new Array(num + 1).fill(true);
+  primes[0] = false;
+  primes[1] = false;
 
-  for (let i = 2; i <= num; i++) {
-    primes[i] = true;
-  }
-
-  for (let j = 2; j <= Math.sqrt(num); j++) {
-    if (primes[j] === true) {
-      for (let k = j * 2; k <= num; k += j) {
-        primes[k] = false;
-      }
+  primes.forEach((isPrime, idxNum) => {
+    if (!isPrime) return;
+    for (let i = idxNum * 2; i <= num; i += idxNum) {
+      primes[i] = false;
     }
-  }
+  });
 
-  for (let l = 2; l <= num; l++) {
-    if (primes[l] === true) {
-      console.log(l);
-    }
-  }
+  primes.forEach((isPrime, idxNum) => {
+    if (isPrime) console.log(idxNum);
+  });
 };
 
-getPrime(50);
+getPrime(10);
